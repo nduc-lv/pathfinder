@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <style>
+        #map{
+            height: 99vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const server = "http://localhost:5000";
+        const api = "/calculate?pntdata=";
+        const map = L.map("map").setView([21.0233513, 105.8480248], 16)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        let count = 0;
+        let firstPoint = {};
+        let secondPoint = {};
+        let polyline;
+        let marker1;
+        let marker2;
+        function onMapClick(e) {
+            if (count == 0){
+                firstPoint.lat = e.latlng.lat
+                firstPoint.lng = e.latlng.lng
+                count += 1;
+                marker1 = L.marker([firstPoint.lat, firstPoint.lng])
+                marker1.addTo(map);
+            }
+            else if (count == 1){
+                secondPoint.lat = e.latlng.lat
+                secondPoint.lng = e.latlng.lng
+                marker2 = L.marker([secondPoint.lat, secondPoint.lng])
+                marker2.addTo(map);
+                count += 1;
+                fetch(server + api + firstPoint.lat + ',' + firstPoint.lng + ',' + secondPoint.lat + ',' + secondPoint.lng, {
+                    "mode": "cors"
+                })
+                .then((res) => {
+                    if (res.status == 200){
+                        return(res.json())
+                    }
+                    else{
+                        throw new Error("Can't find a path")
+                    }
+                })
+                .then((array) => {
+                    // array.push([firstPoint.lat, firstPoint.lng])
+                    // array.splice(0, 0, [secondPoint.lat, secondPoint.lng])
+                    // marker2.setLatLng(array[0])
+                    // marker1.setLatLng(array[array.length - 1])
+                    polyline = L.polyline(array)
+                    polyline.addTo(map);
+                    dashPolyline = L.polyline([array[0], [secondPoint.lat, secondPoint.lng]], {"dashArray": "10", "dashOffset": 3, "color": "gray"}).addTo(map)
+                    dashPolyline2 = L.polyline([array[array.length - 1], [firstPoint.lat, firstPoint.lng]], {"dashArray": "4", "dashOffset": 3, "color": "gray"}).addTo(map)
+                    // console.log(array)
+                    // for (let i = 0; i < array.length; i++){
+                    //     L.marker(array[i]).addTo(map)
+                    // }
+                })
+                .catch((e) => {
+                    allert("Can't Find A Path")
+                })
+            }
+            else if (count == 2){
+                count = 0;
+                map.removeLayer(marker1)
+                map.removeLayer(marker2)
+                map.removeLayer(polyline)
+                map.removeLayer(dashPolyline)
+                map.removeLayer(dashPolyline2)
+            }
+        }
+
+        map.on('click', onMapClick);
+    </script>
+</body>
+</html>
