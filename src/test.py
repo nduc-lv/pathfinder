@@ -1,7 +1,7 @@
 import xmltodict
 import helper as help
 import sys
-graphml = open("../data/map2.graphml", "+br")
+graphml = open("../data/map3.graphml", "+br")
 
 xmldoc = xmltodict.parse(graphml, xml_attribs = True)
 orig_stdout = sys.stdout

@@ -1,6 +1,6 @@
 import xmltodict
 import haversine
-graphml = open("../data/map2.graphml", "+br")
+graphml = open("../data/map3.graphml", "+br")
 xmldoc = xmltodict.parse(graphml, xml_attribs=True)
 
 # node: list of {'@id': '11337806829', 'data': [{'@key': 'd3', '#text': '21.0287243'}, {'@key': 'd4', '#text': '105.8598932'}]}
@@ -61,6 +61,7 @@ def getAdjacentNodes(OSMId):
                         isRoad = 1
             if (isRoad):
                 adjacentNodes.append((edge["@target"], length))
+                isRoad = 0
     return adjacentNodes
 
 
@@ -98,5 +99,6 @@ def getResponseLeafLet(pathDict, endPoint):
         tmpArray.append(point[1])
         response.append(tmpArray)
         point = pathDict[point]
+        # print(getOSMId(point[0], point[1]))
     response.append([point[0], point[1]])
     return response
