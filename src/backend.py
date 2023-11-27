@@ -19,9 +19,10 @@ def home():
     print("Start Id: " + start)
     end = helper.getOSMId(float(mappedDestLoc[0]), float(mappedDestLoc[1]))
     print("End Id: " + end)
-    pathDict, finalDistance = astar.astar(start, end)
+    pathDict, finalDistance = astar.astarID(start, end)
     print("Shortest distance: " + str(finalDistance))
-    response = helper.getResponseLeafLet(pathDict, (float(mappedDestLoc[0]), float(mappedDestLoc[1])))
+    response = helper.getResponseLeafLet2(pathDict, end)
+    # response = helper.getResponseLeafLet(pathDict, (float(mappedDestLoc[0]), float(mappedDestLoc[1])))
     # return json.dumps(getInput.getAllPoints())
     return json.dumps(response)
 

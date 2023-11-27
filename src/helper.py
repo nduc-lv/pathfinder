@@ -1,5 +1,6 @@
 import xmltodict
 import haversine
+import extract
 graphml = open("../data/map3.graphml", "+br")
 xmldoc = xmltodict.parse(graphml, xml_attribs=True)
 
@@ -102,3 +103,34 @@ def getResponseLeafLet(pathDict, endPoint):
         # print(getOSMId(point[0], point[1]))
     response.append([point[0], point[1]])
     return response
+def getLineString(start, end):
+    ans = []
+    for edge in xmldoc["graphml"]["graph"]["edge"]:
+        if (edge["@source"] == start and edge["@target"] == end):
+            for datum in edge["data"]:
+                if datum["@key"] == "d16":
+                    ans = extract.extractLineString(datum["#text"])
+                    return ans
+    return ans
+def getResponseLeafLet2(pathDict, endID):
+    response = []
+    point = endID
+    visited = {}
+    while (pathDict[point] != None):
+        betweenNodes = getLineString(pathDict[point], point)
+        betweenNodes.reverse()
+        pointLocation = getLatLon(point)
+        if (pointLocation not in visited):
+            response.append([pointLocation[0], pointLocation[1]])
+            visited[pointLocation] = 1
+        for i in betweenNodes:
+            if (i not in visited):
+                visited[i] = 1
+                response.append([i[0], i[1]])
+        point = pathDict[point]
+    pointLocation = getLatLon(point)
+    if (pointLocation not in visited):
+        response.append([pointLocation[0], pointLocation[1]])
+    print(response)
+    return response
+# print(getResponseLeafLet2({"11335253059": None, "6581804736": "11335253059"}, "6581804736"))
