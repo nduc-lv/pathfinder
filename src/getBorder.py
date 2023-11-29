@@ -2,6 +2,8 @@ import xmltodict
 import extract
 import sys
 import helper
+
+# get the border coordinates of the area
 orig_stdout = sys.stdout
 f = open("../data/border.txt", "w")
 graphml = open("../data/map3.graphml", "+br")

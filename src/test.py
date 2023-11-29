@@ -1,6 +1,8 @@
 import xmltodict
 import helper as help
 import sys
+
+# generate all coordinates on the road
 graphml = open("../data/map3.graphml", "+br")
 
 xmldoc = xmltodict.parse(graphml, xml_attribs = True)

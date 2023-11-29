@@ -26843,7 +26843,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">False</data>
       <data key="d10">58.045</data>
@@ -26854,7 +26854,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">True</data>
       <data key="d10">7.205</data>
@@ -26881,7 +26881,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
@@ -26893,7 +26893,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">False</data>
       <data key="d10">50.649</data>
@@ -26904,7 +26904,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">True</data>
       <data key="d10">58.045</data>
@@ -26914,7 +26914,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
@@ -26926,7 +26926,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
@@ -39825,7 +39825,7 @@
     <edge source="6611718419" target="10130011707" id="0">
       <data key="d7">704147324</data>
       <data key="d13">Ngõ Đoàn Nhữ Hài</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
       <data key="d9">True</data>
@@ -39850,7 +39850,7 @@
     <edge source="6611718420" target="10130011707" id="0">
       <data key="d7">704147324</data>
       <data key="d13">Ngõ Đoàn Nhữ Hài</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
       <data key="d9">False</data>
@@ -62213,7 +62213,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">False</data>
       <data key="d10">7.205</data>
@@ -62237,7 +62237,7 @@
       <data key="d8">False</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hạ Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d9">True</data>
       <data key="d10">50.648999999999994</data>
@@ -62280,7 +62280,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
@@ -62291,7 +62291,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
@@ -78841,7 +78841,7 @@
     <edge source="10130011707" target="6611718419" id="0">
       <data key="d7">704147324</data>
       <data key="d13">Ngõ Đoàn Nhữ Hài</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
       <data key="d9">False</data>
@@ -78850,7 +78850,7 @@
     <edge source="10130011707" target="6611718420" id="0">
       <data key="d7">704147324</data>
       <data key="d13">Ngõ Đoàn Nhữ Hài</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>
       <data key="d9">True</data>
@@ -89932,7 +89932,7 @@
       <data key="d7">221699070</data>
       <data key="d12">1</data>
       <data key="d13">Ngõ Xóm Hà Hồi</data>
-      <data key="d14">service</data>
+      <data key="d14">residential</data>
       <data key="d15">50</data>
       <data key="d18">alley</data>
       <data key="d8">False</data>

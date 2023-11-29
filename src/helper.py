@@ -10,7 +10,7 @@ xmldoc = xmltodict.parse(graphml, xml_attribs=True)
 road = {"primary":0, "secondary":0, "tertiary":0, "unclassified":0, "residential": 0}
 
 def getLatLon(OSMId):
-    # get the location of a node with the given OSMId
+    # return the coordinate of the node with the given OSMId
     nodes = xmldoc["graphml"]["graph"]["node"]
     size = len(nodes)
     lat = ""
@@ -26,11 +26,11 @@ def getLatLon(OSMId):
                     lon = datum["#text"] #string
                     break
             break
-    return (float(lat), float(lon)) # return a pair of coordinates
+    return (float(lat), float(lon))
 
 
 def getOSMId(lat, lon):
-    # return the OSMId of the node with the given lat and lon
+    # return the OSMId of the node with the given latitude and longitude
     nodes = xmldoc["graphml"]["graph"]["node"]
     id = ""
     for node in nodes:
@@ -47,6 +47,7 @@ def getOSMId(lat, lon):
 
 
 def getAdjacentNodes(OSMId):
+    # return a list of nodes that are neighboring the node identified by the specified OSMId
     edges = xmldoc["graphml"]["graph"]["edge"]
     adjacentNodes = []
     length = 0
@@ -67,43 +68,16 @@ def getAdjacentNodes(OSMId):
 
 
 def getHeuristic(point1, point2):
+    # point1: a tuple of two float numbers respresenting the coordinate of the first point
+    # point2: a tuple of two float number representing the coordinate of the second point
+    # return the great-circle distance between the two points on the Earth surface
     return haversine.haversine(point1, point2)
 
 
-def getPath(pathDict, endPoint):
-    path = []
-    point = endPoint
-    while (pathDict[point] != None):
-        point = pathDict[point]
-        path.append(point)
-    return path
-
-
-def getResponse(pathDict, endPoint):
-    response = []
-    point = endPoint
-    while (pathDict[point] != None):
-        tmpDict = {}
-        tmpDict["lat"] = point[0]
-        tmpDict["lng"] = point[1]
-        response.append(tmpDict)
-        point = pathDict[point]
-    response.append({"lat": point[0], "lng": point[1]})
-    return response
-
-def getResponseLeafLet(pathDict, endPoint):
-    response = []
-    point = endPoint
-    while (pathDict[point] != None):
-        tmpArray = []
-        tmpArray.append(point[0])
-        tmpArray.append(point[1])
-        response.append(tmpArray)
-        point = pathDict[point]
-        # print(getOSMId(point[0], point[1]))
-    response.append([point[0], point[1]])
-    return response
 def getLineString(start, end):
+    # start: the OSMId of the source node
+    # end: the OSMId of the target node
+    # return a list of coordinates in the LINESTRING, if it is present
     ans = []
     for edge in xmldoc["graphml"]["graph"]["edge"]:
         if (edge["@source"] == start and edge["@target"] == end):
@@ -112,7 +86,10 @@ def getLineString(start, end):
                     ans = extract.extractLineString(datum["#text"])
                     return ans
     return ans
-def getResponseLeafLet2(pathDict, endID):
+def getResponseLeafLet(pathDict, endID):
+    # pathDict: a dictionary which will be used to trace the shortest path
+    # endID: the OSMId of the destination node
+    # return a list of coordinates that defines the shortest path
     response = []
     point = endID
     visited = {}
@@ -131,6 +108,5 @@ def getResponseLeafLet2(pathDict, endID):
     pointLocation = getLatLon(point)
     if (pointLocation not in visited):
         response.append([pointLocation[0], pointLocation[1]])
-    print(response)
     return response
-# print(getResponseLeafLet2({"11335253059": None, "6581804736": "11335253059"}, "6581804736"))
+
