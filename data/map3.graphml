@@ -31495,7 +31495,7 @@
     <edge source="5704289441" target="8176641057" id="0">
       <data key="d7">599622836</data>
       <data key="d13">Ngõ Dã Tượng</data>
-      <data key="d14">residential</data>
+      <data key="d14">service</data>
       <data key="d8">False</data>
       <data key="d9">True</data>
       <data key="d10">65.047</data>
@@ -31520,7 +31520,7 @@
     <edge source="5704289443" target="8176641057" id="0">
       <data key="d7">599622836</data>
       <data key="d13">Ngõ Dã Tượng</data>
-      <data key="d14">residential</data>
+      <data key="d14">service</data>
       <data key="d8">False</data>
       <data key="d9">False</data>
       <data key="d10">4.392</data>
@@ -61208,7 +61208,7 @@
     <edge source="8176641057" target="5704289443" id="0">
       <data key="d7">599622836</data>
       <data key="d13">Ngõ Dã Tượng</data>
-      <data key="d14">residential</data>
+      <data key="d14">service</data>
       <data key="d8">False</data>
       <data key="d9">True</data>
       <data key="d10">4.392</data>
@@ -61223,7 +61223,7 @@
     <edge source="8176641057" target="5704289441" id="0">
       <data key="d7">599622836</data>
       <data key="d13">Ngõ Dã Tượng</data>
-      <data key="d14">residential</data>
+      <data key="d14">service</data>
       <data key="d8">False</data>
       <data key="d9">False</data>
       <data key="d10">65.047</data>
