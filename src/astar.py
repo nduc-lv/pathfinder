@@ -17,7 +17,7 @@ def astar(start, end):
     startToEnd = help.getHeuristic(startLocation, endLocation)
     opened_list_values = {start: (startToEnd, 0)}
     opened = [(startToEnd, 0, start)]
-    closed = {start: startToEnd}
+    closed = {}
     hq.heapify(opened)
     s = time.time()
     while (len(opened) > 0):
