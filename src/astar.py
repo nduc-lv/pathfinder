@@ -37,7 +37,7 @@ def astar(start, end):
             if (neighborNodeOSMId not in closed):
                 opened.append(value)
                 previous[neighborNodeOSMId] = currNodeId
-        hq.heapify(opened)
+        hq.heapify(list(set(opened)))
     print("Time taken to find path(in second): "+str(time.time()-s))
     return (previous, finalDistance)
 
