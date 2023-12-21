@@ -15,6 +15,7 @@ def astar(start, end):
     endLocation = help.getLatLon(end)
     previous[start] = None
     startToEnd = help.getHeuristic(startLocation, endLocation)
+    opened_list_values = {start: (startToEnd, 0)}
     opened = [(startToEnd, 0, start)]
     closed = {start: startToEnd}
     hq.heapify(opened)
@@ -35,9 +36,24 @@ def astar(start, end):
             aGrade = distanceToNeighborNode + heuristic
             value = (aGrade, distanceToNeighborNode, neighborNodeOSMId)
             if (neighborNodeOSMId not in closed):
-                opened.append(value)
-                previous[neighborNodeOSMId] = currNodeId
-        hq.heapify(list(set(opened)))
+                # Nếu nút hàng xóm chưa trong tập mở
+                if (neighborNodeOSMId not in opened_list_values):
+                    # thêm vào tập mở
+                    opened_list_values[neighborNodeOSMId] = (aGrade, distanceToNeighborNode)
+                    opened.append(value)
+                    previous[neighborNodeOSMId] = currNodeId
+                # Nếu nút hàng xóm đã có trong tập mở
+                else:
+                    # nếu A* Grade (giá trị hàm f) của nút hàng xóm vừa tính được mà nhỏ hơn A* grade của nó trong hàm mở
+                    if opened_list_values[neighborNodeOSMId][0] > aGrade:
+                        old_aGrade =opened_list_values[neighborNodeOSMId][0]
+                        old_distance = opened_list_values[neighborNodeOSMId][1]
+                        # Thay thế  ...
+                        opened.remove((old_aGrade, old_distance, neighborNodeOSMId))
+                        opened_list_values[neighborNodeOSMId] = (aGrade, distanceToCurrNode)
+                        opened.append(value)
+                        previous[neighborNodeOSMId] = currNodeId
+        hq.heapify((opened))
     print("Time taken to find path(in second): "+str(time.time()-s))
     return (previous, finalDistance)
 
