@@ -71,7 +71,7 @@ def getHeuristic(point1, point2):
     # point1: a tuple of two float numbers respresenting the coordinate of the first point
     # point2: a tuple of two float number representing the coordinate of the second point
     # return the great-circle distance between the two points on the Earth surface
-    return haversine.haversine(point1, point2)
+    return haversine.haversine(point1, point2) * 1000
 
 
 def getLineString(start, end):
