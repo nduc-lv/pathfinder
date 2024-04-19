@@ -3,7 +3,7 @@ Pathfinder is a navigational tool using the A* algorithm designed to find the sh
 Users can effortlessly utilize the application by choosing two points within the specified bordered area. Once selected, Pathfinder will promptly generate and display the shortest path, facilitating efficient and convenient navigation throughout the mapped areag <br>
 ## Tech Stack
 - Built on **Flask**.
-- Use **HTML**, **Leaflet** with **Open Street Map** being embedded for the interface.
+- Use **HTML**, **Leaflet** for the interface.
 - Use **Open Street Map** for getting data. 
 # USAGE GUIDE
 Initiate by running backend.py located in the src folder. <br>
