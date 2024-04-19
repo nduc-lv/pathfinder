@@ -4,7 +4,7 @@ Users can effortlessly utilize the application by choosing two points within the
 ## Tech Stack
 - Built on **Flask**.
 - Use **HTML**, **Leaflet** for the interface.
-- Use **Open Street Map** for getting data. 
+- Data source: [Open Street Map](https://www.openstreetmap.org/)
 # USAGE GUIDE
 Initiate by running backend.py located in the src folder. <br>
 Subsequently, open the map2.html file in the data folder using your preferred web browser <br>
